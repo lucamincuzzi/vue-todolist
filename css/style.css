@@ -3,3 +3,32 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+header {
+    text-align: center;
+    font-size: 1.5rem;
+    height: 80px;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+header span {
+    margin-left: 10px;
+}
+
+.insert {
+    width: 50%;
+}
+
+.list-group {
+    width: 50%;
+}
+
+.list-group i {
+    margin-left: 10px;
+    color: red;
+}
+
+.list-group-item .checked {
+    text-decoration: line-through;
+}
