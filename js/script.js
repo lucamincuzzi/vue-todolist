@@ -3,6 +3,11 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      newTodo: {
+        text: "",
+        done: false,
+        visibility: true,
+      },
       todo: [
         {
           text: "Fare lavatrice",
@@ -35,9 +40,13 @@ createApp({
         console.log(this.todo[index].text, ":", "Non fatto");
       }
     },
-    eraseItem: function(index) {
-        this.todo[index].visibility = false
-        console.log("Ciao");
+    eraseItem: function (index) {
+      this.todo[index].visibility = false;
+      console.log("Ciao");
+    },
+    addNewTodo: function () {
+        const newTodoItem = {...this.newTodo}
+        this.todo.push(newTodoItem);
     }
   },
 }).mount("#app");
