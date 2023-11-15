@@ -25,6 +25,8 @@ header span {
 }
 
 .list-group i {
+    position: relative;
+    z-index: 999;
     margin-left: 10px;
     color: red;
 }

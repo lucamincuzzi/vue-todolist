@@ -7,14 +7,17 @@ createApp({
         {
           text: "Fare lavatrice",
           done: false,
+          visibility: true,
         },
         {
           text: "Prendere il latte",
           done: false,
+          visibility: true,
         },
         {
           text: "Portare Fannie dalla veterinaria",
           done: false,
+          visibility: true,
         },
       ],
     };
@@ -32,5 +35,9 @@ createApp({
         console.log(this.todo[index].text, ":", "Non fatto");
       }
     },
+    eraseItem: function(index) {
+        this.todo[index].visibility = false
+        console.log("Ciao");
+    }
   },
 }).mount("#app");

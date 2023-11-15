@@ -35,10 +35,10 @@
       <!-- /Form di aggiunta to-do -->
       <!-- Lista di to-do -->
       <ul class="list-group mt-5 mx-auto">
-        <li v-for="(item, index) in todo" class="list-group-item">
+        <li v-for="(item, index) in todo" class="list-group-item" v-show="item.visibility">
           <input class="form-check-input me-1" type="checkbox" value="" :id="item.text">
           <label class="form-check-label stretched-link" :class="item.done === true ? 'checked' : ''" :for="item.text" @click="checked(index)">{{ todo[index].text }}</label>
-          <i class="fa-solid fa-xmark"></i>
+          <i class="fa-solid fa-xmark" @click="eraseItem(index)"></i>
         </li>
         </li>
       </ul>
