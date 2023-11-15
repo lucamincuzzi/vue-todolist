@@ -44,9 +44,13 @@ createApp({
       this.todo[index].visibility = false;
       console.log("Ciao");
     },
-    addNewTodo: function () {
-        const newTodoItem = {...this.newTodo}
+    addNewTodo: function (event) {
+      event.preventDefault();
+      if (this.newTodo.text !== "") {
+        const newTodoItem = { ...this.newTodo };
         this.todo.push(newTodoItem);
-    }
+      }
+      this.newTodo.text = "";
+    },
   },
 }).mount("#app");

@@ -25,20 +25,18 @@
   <body>
     <div id="app">
       <header>
-        <i class="fa-solid fa-note-sticky"></i><span>My To-Do List</span>
+        <i class="fa-solid fa-note-sticky"></i><span class="ms-2">My To-Do List</span>
       </header>
       <!-- Form di aggiunta to-do -->
       <form>
-      <div class="input-group insert mx-auto mt-4 mb-3">
-        <div class="input-group mb-3">
-            <input v-model="newTodo.text" type="text" class="form-control" placeholder="What to do...?" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="addNewTodo">Aggiungi</button>
+        <div class="form d-flex justify-content-center align-items-center mx-auto my-4">
+            <input v-model="newTodo.text" type="text" placeholder="What to do...?">
+            <button class="ms-3" @click="addNewTodo">Aggiungi</button>
         </div>          
       </form>
-      </div>
       <!-- /Form di aggiunta to-do -->
       <!-- Lista di to-do -->
-      <ul class="list-group mt-5 mx-auto">
+      <ul class="list-group mx-auto">
         <li v-for="(item, index) in todo" class="list-group-item" v-show="item.visibility">
           <input class="form-check-input me-1" type="checkbox" value="" :id="item.text">
           <label class="form-check-label stretched-link" :class="item.done === true ? 'checked' : ''" :for="item.text" @click="checked(index)">{{ todo[index].text }}</label>
