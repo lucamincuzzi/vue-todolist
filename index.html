@@ -29,21 +29,25 @@
       </header>
       <!-- Form di aggiunta to-do -->
       <form>
-        <div class="form d-flex justify-content-center align-items-center mx-auto my-4">
-            <input v-model="newTodo.text" type="text" placeholder="What to do...?">
+        <div class="form d-flex justify-content-center align-items-center mx-auto mt-4">
+            <input v-model.trim="newTodo.text" type="text" placeholder="What to do...?">
             <button class="ms-3" @click="addNewTodo">Aggiungi</button>
-        </div>          
+        </div>    
       </form>
+      <div v-show="errorVisible" class="text-center text-danger mt-3">Il to-do non può essere vuoto!</div>
+      <hr class="my-4 mx-auto">
       <!-- /Form di aggiunta to-do -->
       <!-- Lista di to-do -->
-      <ul class="list-group mx-auto">
-        <li v-for="(item, index) in todo" class="list-group-item" v-show="item.visibility">
-          <input class="form-check-input me-1" type="checkbox" value="" :id="item.text">
-          <label class="form-check-label stretched-link" :class="item.done === true ? 'checked' : ''" :for="item.text" @click="checked(index)">{{ todo[index].text }}</label>
-          <i class="fa-solid fa-xmark" @click="eraseItem(index)"></i>
-        </li>
+      <ul class="list-group mx-auto" v-if="todo.length > 0">
+        <li v-for="(item, index) in todo" :key="item.text" class="list-group-item d-flex justify-content-between" v-show="item.visibility">
+          <div>
+            <input class="form-check-input me-1" type="checkbox" :id="item.text">
+            <label class="form-check-label stretched-link ms-2" :class="item.done === true ? 'checked' : ''" :for="item.text" @click.stop="checked(index)">{{ item.text }}</label>
+          </div>
+          <button class="primary-btn btn-danger" @click="eraseItem(index)"><i class="fa-solid fa-xmark align-self-center"></i></button>
         </li>
       </ul>
+      <div class="alert alert-success mx-auto" v-else>Non c'è niente da fare...</div>
       <!-- /Lista di to-do -->
     </div>
     <!-- Scripts -->

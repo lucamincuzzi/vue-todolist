@@ -23,14 +23,25 @@ header {
     color: white;
 }
 
-.list-group {
+hr,
+.alert {
     width: 50%;
 }
 
-.list-group i {
+.list-group {
+    width: 400px;
+}
+
+.list-group-item button {
     position: relative;
     z-index: 999;
-    margin-left: 10px;
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.list-group-item i {
     color: red;
 }
 

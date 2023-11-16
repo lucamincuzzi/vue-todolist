@@ -3,32 +3,29 @@ const { createApp } = Vue;
 createApp({
   data() {
     return {
+      errorVisible: false,
       newTodo: {
         text: "",
         done: false,
-        visibility: true,
       },
       todo: [
         {
           text: "Fare lavatrice",
           done: false,
-          visibility: true,
         },
         {
           text: "Prendere il latte",
           done: false,
-          visibility: true,
         },
         {
           text: "Portare Fannie dalla veterinaria",
           done: false,
-          visibility: true,
         },
       ],
     };
   },
   created() {
-    console.log("Ciao");
+    console.log("To-do list creata");
   },
   methods: {
     checked: function (index) {
@@ -41,16 +38,19 @@ createApp({
       }
     },
     eraseItem: function (index) {
-      this.todo[index].visibility = false;
-      console.log("Ciao");
+      this.todo.splice(index, 1);
+      console.log("Eliminato");
     },
     addNewTodo: function (event) {
       event.preventDefault();
+      this.errorVisible = false;
       if (this.newTodo.text !== "") {
         const newTodoItem = { ...this.newTodo };
-        this.todo.push(newTodoItem);
+        this.todo.unshift(newTodoItem);
+        this.newTodo.text = "";
+      } else {
+        this.errorVisible = true;
       }
-      this.newTodo.text = "";
     },
   },
 }).mount("#app");
